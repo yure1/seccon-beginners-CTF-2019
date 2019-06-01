@@ -55,8 +55,8 @@ main関数の最初の処理から追っていきます。
 
 次に以下の処理について見ていきます。  
 <img width="392" alt="無題" src="https://user-images.githubusercontent.com/51044014/58749431-080af080-84c1-11e9-9098-db2c255e237e.png">  
-詳細は分かりませんが、どうやらコマンドライン引数が1より少ないと`usage: ./seccompare flag`を表示して終了します。  
-また、1より多い場合は、loc_400630に分岐します。  
+詳細は分かりませんが、コマンドライン引数が1より少ないと`usage: ./seccompare flag`を表示して終了します。  
+1より多い場合は、loc_400630に分岐します。  
 
 loc_400630では、まず1文字ずつスタックに積んでいきます。  
 <img width="167" alt="2" src="https://user-images.githubusercontent.com/51044014/58750096-ddbd3100-84c8-11e9-9e8c-9b43aed11549.png">  
