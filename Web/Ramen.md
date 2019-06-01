@@ -3,7 +3,7 @@
 ラメーン是非とも食したいところです。
 
 問題URL：https://ramen.quals.beginners.seccon.jp/  
-6月前半まで。
+6月前半まで。  
 *技術用語：SQL、SQLインジェクション*
 
 ## 解答例  
