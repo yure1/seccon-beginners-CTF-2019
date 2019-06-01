@@ -4,6 +4,7 @@
 問題URL1：https://katsudon.quals.beginners.seccon.jp/storelists  
 問題URL2：https://katsudon.quals.beginners.seccon.jp/flag  
 6月前半まで。  
+*技術用語：base64、Rails*
 
 ## 解答例
 1. クーポンが`--`で区切られていることに気づく。
