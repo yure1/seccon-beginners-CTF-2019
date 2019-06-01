@@ -15,7 +15,7 @@ tar -xvf ファイル名
 file seccompare
 ~~~
 3. 逆アセンブラをするソフト(IDA, Ghidra, etc.)やデバッガ(gdb etc.)などを用いて解析し、処理の内容を把握する。
-4. strcmp関数に代入されている文字列を見つけ出せば、flag取得。
+4. strcmp関数に代入されている文字列を見つけ出して、flag取得。
 
 ## 詳細
 ### 0. この問題について
@@ -29,9 +29,10 @@ tar -xvf ファイル名
 ~~~
 ファイルが解凍され出現しますが、どんなファイルかわからないので`file`コマンドを用いて、ファイルの種類を判別します。
 ~~~
-file seccompare
+$ file seccompare
+seccompare: ELF 64-bit LSB executable, x86-64,～
 ~~~
-すると、elfファイルであることが分かりました。  
+elfファイルであることが分かりました。  
 実行してみます。
 ~~~
 $ ./seccompare
@@ -48,4 +49,24 @@ wrong
 
 ### 3～4. flag取得を目指す。
 今回は、逆アセンブルにIDAのフリーウェア版を用います。  
-先ほど解凍した実行ファイルをIDAで開きます。
+先ほど解凍した実行ファイルをIDAで開きます。  
+main関数の最初の処理から追っていきます。  
+初めのずらずら書いてあるところは、後で使用する文字を格納する場所を指し示すポインタです。  
+
+次に以下の処理について見ていきます。  
+<img width="392" alt="無題" src="https://user-images.githubusercontent.com/51044014/58749431-080af080-84c1-11e9-9098-db2c255e237e.png">  
+詳細は分かりませんが、どうやらコマンドライン引数が1より少ないと`usage: ./seccompare flag`を表示して終了します。  
+また、1より多い場合は、loc_400630に分岐します。  
+
+loc_400630では、まず1文字ずつスタックに積んでいきます。  
+<img width="167" alt="2" src="https://user-images.githubusercontent.com/51044014/58750096-ddbd3100-84c8-11e9-9e8c-9b43aed11549.png">  
+その後、先ほどスタックに積んだ文字列s1と、コマンドライン引数s2を引数としてstrcmp関数を実行します。  
+<img width="185" alt="3" src="https://user-images.githubusercontent.com/51044014/58750139-7b186500-84c9-11e9-8ae1-5aaba5aed7db.png">  
+s1とs2が一致していれば`correct`、一致していなければ`wrong`が表示されます。  
+
+以上から、loc_400630の最初に積まれた文字列s1を読み取ればflagが取得できそうです。
+IDAは勝手にasciiコードを文字に変換してくれないので、ascii表とにらめっこ、`echo -e "\x63\x74・・・"`で出力などで変換することで、flagが取得できます。  
+また、今回はstrcmpという共有ライブラリの関数を使用しているため、`ltrace`コマンドが使用できます。（とても楽…。）
+~~~
+$ ltrace ./seccompare ctf4{aoeijf}
+~~~
