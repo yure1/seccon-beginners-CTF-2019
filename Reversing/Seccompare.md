@@ -70,3 +70,30 @@ IDAは勝手にasciiコードを文字に変換してくれないので、ascii�
 ~~~
 $ ltrace ./seccompare ctf4{aoeijf}
 ~~~
+### 5. サンプルコード
+今回の処理をコードにすると、このような感じです。  
+問題の処理を完全に再現しているわけではないので、注意して下さい。
+~~~
+#include<stdio.h>
+#include<string.h>
+
+int main(int argc, char *argv[]) {
+  if (argc > 1) {
+    char s1[] = "ctf4b{samp1e}";
+    int strcmp_value = -1;
+
+    strcmp_value = strcmp(s1, argv[1]);
+
+    if (strcmp_value != 0) {
+      puts("wrong");
+    } else {
+      puts("correct");
+    }
+
+  } else {
+    puts("usage: ./seccompare flag");
+  }
+
+  return 0;
+}
+~~~
