@@ -42,7 +42,7 @@ output: zlib compressed data
 ~~~ 
 どうやら、zlibで圧縮されたデータのようです。  
 ここでは、python3を用いて解凍します。
-~~~
+~~~Python3
 import zlib
 
 with open("output", "rb") as fin:
@@ -57,7 +57,7 @@ with open("output", "rb") as fin:
 ### 6. base64デコードとzlibの解凍を繰り返す。
 何度繰り返せばよいのか分からないので、zlib解凍後の文字列の長さが50より小さくなるまで、繰り返すことにします。  
 以下、python3を用いたbase64デコードとzlibの解凍を繰り返すプログラムです。
-~~~
+~~~Python3
 import base64
 import zlib
 
