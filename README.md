@@ -16,8 +16,8 @@ Seccompare : 57 公開中
 Leakage : 186 公開中  
 
 ## [Crypto]  
-So Tired : 115  
-Party : 223  
+So Tired : 115 公開中  
+Party : 223 公開中  
 
 ## [Misc]  
 Welcome : 51 公開中  
