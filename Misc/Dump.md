@@ -69,7 +69,7 @@ pcapファイルの下のほうを見ていきますと、3193番目にHTTPレ�
 ここでは、hexdump.txtに保存しました。  
 
 次に、python3を用いてバイナリへと変換します。  
-~~~
+~~~Python3
 def main():
     with open("hexdump.txt", "r") as fin:
         text = fin.read()
