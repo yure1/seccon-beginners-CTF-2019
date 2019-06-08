@@ -1,4 +1,4 @@
-# [Misc] Dump 作成中
+# [Misc] Dump
 pcapファイルから、大量の8進数文字列を抽出する問題です。  
 問題URL：https://score.beginners.seccon.jp/files/fc23f13bcf6562e540ed81d1f47710af_dump  
 6月前半まで。  
