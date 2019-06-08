@@ -6,21 +6,24 @@ Seccon2019 Beginners CTF 2019の解答できた問題を忘れないよう、Out
 *注意！　悪用は勿論しないでくださいね！*
 
 ---  
-# Writeup 予定  
+# Writeup  
 ## [Web]  
-Ramen : 73 公開中  
-katsudon : 101 公開中  
+Ramen : 73   
+katsudon : 101   
 
 ## [Reversing]  
-Seccompare : 57 公開中  
-Leakage : 186 公開中  
+Seccompare : 57   
+Leakage : 186   
 
 ## [Crypto]  
-So Tired : 115 公開中  
-Party : 223 公開中  
+So Tired : 115   
+Party : 223   
 
 ## [Misc]  
-Welcome : 51 公開中  
+Welcome : 51   
 containers : 71  
 Dump : 138  
+
 Sliding puzzle : 206  
+ ⇒ 筆者はsliding puzzleのsolverを探して解いたため、立ち寄って頂いて読んでもらえるものを作成できないと考え、書かないことにしました。  
+ すみません…。
